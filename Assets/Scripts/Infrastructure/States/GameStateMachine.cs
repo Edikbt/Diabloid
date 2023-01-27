@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Zenject;
 
 namespace Diabloid
 {
@@ -8,11 +9,14 @@ namespace Diabloid
         private Dictionary<Type, IExitableState> _states;
         private IExitableState _activeState;
 
-        public GameStateMachine()
+        public GameStateMachine(SceneLoader sceneLoader, DiContainer container)
         {
             _states = new Dictionary<Type, IExitableState>
             {
-                //[typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, services),
+                [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader),
+                [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, container.Resolve<IGameFactory>(), container.Resolve<IPersistentProgressService>()),
+                [typeof(LoadProgressState)] = new LoadProgressState(this, container.Resolve<IPersistentProgressService>(), container.Resolve<ISaveLoadService>()),
+                [typeof(GameLoopState)] = new GameLoopState(this),
             };
         }
 

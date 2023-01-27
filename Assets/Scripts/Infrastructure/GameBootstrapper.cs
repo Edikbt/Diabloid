@@ -9,7 +9,7 @@ namespace Diabloid
         private void Awake()
         {
             _game = new Game(this);
-            //_game.StateMachine.Enter<BootstrapState>();
+            _game.StateMachine.Enter<BootstrapState>();
 
             DontDestroyOnLoad(this);
         }

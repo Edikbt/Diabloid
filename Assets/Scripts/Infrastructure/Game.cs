@@ -1,4 +1,3 @@
-
 namespace Diabloid
 {
     public class Game
@@ -7,7 +6,7 @@ namespace Diabloid
 
         public Game(ICoroutineRunner coroutineRunner)
         {
-            StateMachine = new GameStateMachine();
+            StateMachine = new GameStateMachine(new SceneLoader(coroutineRunner), DiContainerRef.Container);
         }
     }
 }
