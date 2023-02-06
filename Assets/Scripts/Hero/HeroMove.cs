@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
@@ -10,10 +11,35 @@ namespace Diabloid
         [SerializeField] private NavMeshAgent _navMesh;
         private IInputService _inputService;
 
+        public event Action<bool> HeroMoving;
+        private bool _isMoving = false;
+
         [Inject]
         public void Construct(IInputService inputService)
         {
             _inputService = inputService;
+        }
+
+        private void Update()
+        {
+            Vector3 touchPosition = _inputService.GetPosition();
+
+            if (touchPosition != Vector3.zero)
+            {
+                Debug.Log("touched");
+
+                _isMoving = true;                
+                _navMesh.SetDestination(touchPosition);
+                HeroMoving?.Invoke(_isMoving);
+            }
+
+            if (_isMoving == true && _navMesh.remainingDistance < 0.5f && _navMesh.remainingDistance != 0)
+            {
+                Debug.Log($"_navMesh.remainingDistance = {_navMesh.remainingDistance}");
+
+                _isMoving = false;
+                HeroMoving?.Invoke(_isMoving);
+            }
         }
 
         public void LoadProgress(PlayerProgress progress)
@@ -33,13 +59,5 @@ namespace Diabloid
 
         private string CurrentLevel() => 
             SceneManager.GetActiveScene().name;
-
-        private void Update()
-        {
-            Vector3 touchPosition = _inputService.GetPosition();
-
-            if (touchPosition != Vector3.zero)
-                _navMesh.SetDestination(touchPosition);
-        }
     }
 }

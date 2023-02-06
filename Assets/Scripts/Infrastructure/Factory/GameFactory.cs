@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +7,7 @@ namespace Diabloid
     {
         public List<ISavedProgressReader> ProgressReaders { get; } = new List<ISavedProgressReader>();
         public List<ISavedProgress> ProgressWriters { get; } = new List<ISavedProgress>();
+        public GameObject Hero { get; private set; }
 
         private readonly IAssetProvider _assetProvider;
 
@@ -16,8 +16,22 @@ namespace Diabloid
             _assetProvider = assetProvider;
         }
 
-        public GameObject CreateHero() =>
-            InstantiateRegistered(AssetAddress.HeroPath);
+        public GameObject CreateHero()
+        {
+            Hero = InstantiateRegistered(AssetAddress.HeroPath);
+
+            return Hero;
+        }
+
+        public GameObject CreateMonster()
+        {
+            GameObject monster = InstantiateRegistered(AssetAddress.GoblinPath);
+
+            if(monster.TryGetComponent(out MoveToPlayer moveToPlayer))
+                moveToPlayer.Construct(Hero.transform);
+
+            return monster;
+        }
 
         public void Cleanup()
         {

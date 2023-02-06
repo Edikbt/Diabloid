@@ -1,5 +1,3 @@
-using System;
-
 namespace Diabloid
 {
     public class LoadLevelState : IPayloadedState<string>
@@ -27,7 +25,8 @@ namespace Diabloid
 
         private void OnLoaded()
         {
-            DiContainerRef.Container.Resolve<IGameFactory>().CreateHero();
+            _gameFactory.CreateHero();
+            _gameFactory.CreateMonster();
 
             InformProgressReaders();
 
