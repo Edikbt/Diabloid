@@ -5,15 +5,16 @@ namespace Diabloid
 {
     public class HeroAnimator : MonoBehaviour, IAnimationStateReader
     {
-        private static readonly int Die = Animator.StringToHash("Die");
-        //private static readonly int Speed = Animator.StringToHash("Speed");
-        private static readonly int IsMoving = Animator.StringToHash("IsMoving");
-        private static readonly int Attack = Animator.StringToHash("Attack1");
+        private static readonly int DieHash = Animator.StringToHash("Die");
+        private static readonly int IsMovingHash = Animator.StringToHash("IsMoving");
+        private static readonly int AttackHash = Animator.StringToHash("Attack1");
+        private static readonly int HitHash = Animator.StringToHash("Hit");
 
         private readonly int _idleStateHash = Animator.StringToHash("idle");
         private readonly int _moveStateHash = Animator.StringToHash("move");
         private readonly int _dieStateHash = Animator.StringToHash("die");
         private readonly int _attackStateHash = Animator.StringToHash("attack1");
+        private readonly int _hitStateHash = Animator.StringToHash("GetHit");
 
         [SerializeField] Animator _animator;
         [SerializeField] HeroMove _heroMove;
@@ -25,7 +26,7 @@ namespace Diabloid
 
         private void Start()
         {
-            _heroMove.HeroMoving += (x) => _animator.SetBool(IsMoving, x);
+            _heroMove.HeroMoving += (x) => _animator.SetBool(IsMovingHash, x);
         }
 
         public void EnteredState(int stateHash)
@@ -41,7 +42,14 @@ namespace Diabloid
         }        
 
         public void PlayDeath() =>
-            _animator.SetTrigger(Die);
+            _animator.SetTrigger(DieHash);
+
+        public void PlayAttack() =>
+            _animator.SetTrigger(AttackHash);
+
+        //private void OnAttack() { }
+
+        //private void OnAttackEnded() { }
 
         private AnimatorState StateFor(int stateHash)
         {

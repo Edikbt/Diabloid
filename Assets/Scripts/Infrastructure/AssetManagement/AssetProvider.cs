@@ -16,12 +16,14 @@ namespace Diabloid
         {
             GameObject prefab = Resources.Load<GameObject>(path);
             return _diContainer.InstantiatePrefab(prefab, at, Quaternion.identity, null);
+            //return GameObject.Instantiate(prefab, at, Quaternion.identity, null);
         }
 
         public GameObject Instantiate(string path)
         {
             GameObject prefab = Resources.Load<GameObject>(path);
             return _diContainer.InstantiatePrefab(prefab);
+            //return GameObject.Instantiate(prefab);
         }
     }
 }

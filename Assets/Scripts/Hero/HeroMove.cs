@@ -28,7 +28,7 @@ namespace Diabloid
             {
                 Debug.Log("touched");
 
-                _isMoving = true;                
+                _isMoving = true;
                 _navMesh.SetDestination(touchPosition);
                 HeroMoving?.Invoke(_isMoving);
             }
