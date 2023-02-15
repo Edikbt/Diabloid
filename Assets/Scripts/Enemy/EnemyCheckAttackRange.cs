@@ -1,12 +1,11 @@
-using System;
 using UnityEngine;
 
 namespace Diabloid
 {
-    [RequireComponent(typeof(Attack))]
-    public class CheckAttackRange : MonoBehaviour
+    [RequireComponent(typeof(EnemyAttack))]
+    public class EnemyCheckAttackRange : MonoBehaviour
     {
-        [SerializeField] private Attack _attack;
+        [SerializeField] private EnemyAttack _attack;
         [SerializeField] private TriggerObserver _triggerObserver;
 
         private void Start()

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Diabloid
 {
-    public class HeroAnimator : MonoBehaviour, IAnimationStateReader
+    public class HeroAnimator : MonoBehaviour, IAnimationStateReader, IMoveAnimate
     {
         private static readonly int DieHash = Animator.StringToHash("Die");
         private static readonly int IsMovingHash = Animator.StringToHash("IsMoving");
@@ -16,17 +16,17 @@ namespace Diabloid
         private readonly int _attackStateHash = Animator.StringToHash("attack1");
         private readonly int _hitStateHash = Animator.StringToHash("GetHit");
 
-        [SerializeField] Animator _animator;
-        [SerializeField] HeroMove _heroMove;
+        [SerializeField] Animator _animator;        
 
         public AnimatorState State { get; private set; }
 
         public event Action<AnimatorState> StateEntered;
         public event Action<AnimatorState> StateExited;
 
-        private void Start()
+        private void Update()
         {
-            _heroMove.HeroMoving += (x) => _animator.SetBool(IsMovingHash, x);
+            if (Input.GetKeyDown(KeyCode.R))
+                PlayHit();
         }
 
         public void EnteredState(int stateHash)
@@ -47,9 +47,14 @@ namespace Diabloid
         public void PlayAttack() =>
             _animator.SetTrigger(AttackHash);
 
-        //private void OnAttack() { }
+        public void Move() =>
+            _animator.SetBool(IsMovingHash, true);
 
-        //private void OnAttackEnded() { }
+        public void StopMove() =>
+            _animator.SetBool(IsMovingHash, false);
+
+        public void PlayHit() =>
+            _animator.SetTrigger(HitHash);        
 
         private AnimatorState StateFor(int stateHash)
         {

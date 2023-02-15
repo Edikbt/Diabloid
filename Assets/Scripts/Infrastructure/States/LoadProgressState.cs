@@ -26,7 +26,16 @@ namespace Diabloid
             _progressService.Progress = _saveLoadService.LoadProgress() ?? NewProgress();
         }
 
-        private PlayerProgress NewProgress() => 
-            new PlayerProgress("Level1");
+        private PlayerProgress NewProgress()
+        {
+            PlayerProgress progress = new PlayerProgress("Level1");
+            
+            progress.HeroState.MaxHp = 100;
+            progress.HeroState.ResetHp();
+            progress.HeroStats.Damage = 10;
+            progress.HeroStats.DamageRadius = 1;
+
+            return progress;
+        }
     }
 }

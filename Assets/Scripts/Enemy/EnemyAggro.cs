@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace Diabloid
 {
-    public class Aggro : MonoBehaviour
+    public class EnemyAggro : MonoBehaviour
     {
         [SerializeField] private TriggerObserver _triggerObserver;
-        [SerializeField] private MoveToPlayer _followToPlayer;
+        [SerializeField] private MoveTo _followToPlayer;
         [SerializeField] private float _cooldown;
 
         private Coroutine _aggroCoroutine;

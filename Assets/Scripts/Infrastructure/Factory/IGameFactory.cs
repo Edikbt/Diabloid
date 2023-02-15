@@ -11,6 +11,7 @@ namespace Diabloid
 
         void Cleanup();
         GameObject CreateHero();
+        GameObject CreateHud();
         GameObject CreateMonster();
     }
 }

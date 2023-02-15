@@ -27,11 +27,14 @@ namespace Diabloid
         {
             GameObject monster = InstantiateRegistered(AssetAddress.GoblinPath);
 
-            if(monster.TryGetComponent(out MoveToPlayer moveToPlayer))
-                moveToPlayer.Construct(Hero.transform);
+            if (monster.TryGetComponent(out MoveTo moveToPlayer))
+                moveToPlayer.SetTaret(Hero.transform);
 
             return monster;
         }
+
+        public GameObject CreateHud() =>
+            InstantiateRegistered(AssetAddress.HUDPath);
 
         public void Cleanup()
         {
@@ -58,6 +61,6 @@ namespace Diabloid
                 ProgressWriters.Add(progressWriter);
 
             ProgressReaders.Add(progressReader);
-        }        
+        }
     }
 }

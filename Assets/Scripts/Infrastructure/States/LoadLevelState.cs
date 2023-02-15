@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Diabloid
 {
     public class LoadLevelState : IPayloadedState<string>
@@ -27,6 +29,9 @@ namespace Diabloid
         {
             _gameFactory.CreateHero();
             _gameFactory.CreateMonster();
+
+            _gameFactory.CreateHud();
+            //hud.GetComponentInChildren<HeroUI>().Construct(_gameFactory);
 
             InformProgressReaders();
 

@@ -240,6 +240,10 @@ GameObject:
   - component: {fileID: 1823085696}
   - component: {fileID: 1823085697}
   - component: {fileID: 1823085698}
+  - component: {fileID: 2058496656105991115}
+  - component: {fileID: 5312966302519520258}
+  - component: {fileID: 7853892529077996680}
+  - component: {fileID: 1953809544732213218}
   m_Layer: 10
   m_Name: TT_RTS_Demo_Character
   m_TagString: Untagged
@@ -362,7 +366,61 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 9569962}
-  _heroMove: {fileID: 1823085697}
+--- !u!114 &2058496656105991115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd5f960c14bf7ab4c949e41b6a673fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _agent: {fileID: 1823085696}
+--- !u!114 &5312966302519520258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ff701259ac278e4c8401f2c55daf71a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: {fileID: 7853892529077996680}
+  _move: {fileID: 1823085697}
+  _animator: {fileID: 1823085698}
+  _attack: {fileID: 1953809544732213218}
+--- !u!114 &7853892529077996680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d5b4d8ec149b14eb3a2e8e3acdac84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 1823085698}
+--- !u!114 &1953809544732213218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c057c0a04da0c0409da09416d5b836b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 1823085698}
 --- !u!1 &131548
 GameObject:
   m_ObjectHideFlags: 0

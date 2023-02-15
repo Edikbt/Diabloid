@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using UnityEngine;
 using Zenject;
@@ -6,12 +5,13 @@ using Zenject;
 namespace Diabloid
 {
     [RequireComponent(typeof(EnemyAnimator))]
-    public class Attack : MonoBehaviour
+    public class EnemyAttack : MonoBehaviour
     {
         [SerializeField] private EnemyAnimator _animator;
         [SerializeField] private float _attackCooldown;
         [SerializeField] private float _cleavage;
         [SerializeField] private float _effectiveDistance;
+        [SerializeField] private float _damage;
 
         private Transform _heroTransform;
         private float _currentCooldown = 0;
@@ -45,7 +45,7 @@ namespace Diabloid
         private void OnAttack()
         {
             if (Hit(out Collider hit))
-                PhysicsDebug.DrawDebug(StartPoint(), _cleavage, 1);
+                hit.transform.GetComponent<IHealth>().TakeDamage(_damage);
         }
 
         private void OnAttackEnded()
@@ -55,11 +55,15 @@ namespace Diabloid
             _animator.StopAttack();
         }
 
-        public void Enable() => 
+        public void Enable()
+        {
             _attackIsActive = true;
+        }
 
-        public void Disable() => 
+        public void Disable()
+        {
             _attackIsActive = false;
+        }
 
         private bool Hit(out Collider hit)
         {
@@ -69,8 +73,10 @@ namespace Diabloid
             return size > 0;
         }
 
-        private Vector3 StartPoint() =>
-            new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z) + transform.forward * _effectiveDistance;
+        private Vector3 StartPoint()
+        {
+            return new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z) + transform.forward * _effectiveDistance;
+        }
 
         private void StartAttack()
         {
