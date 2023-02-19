@@ -6,5 +6,6 @@ namespace Diabloid
     {
         GameObject Instantiate(string path);
         GameObject Instantiate(string path, Vector3 at);
+        GameObject Instantiate(EnemyStatsData enemyStatsData, Transform parent);
     }
 }

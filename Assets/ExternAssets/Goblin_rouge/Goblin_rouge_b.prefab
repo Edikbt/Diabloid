@@ -2238,13 +2238,14 @@ GameObject:
   - component: {fileID: 9504128}
   - component: {fileID: 3507465595518309318}
   - component: {fileID: 5593967952059361230}
-  - component: {fileID: 8531855339097673739}
   - component: {fileID: 7686555447833460600}
   - component: {fileID: 2969438279869227716}
   - component: {fileID: 8440128266046530835}
   - component: {fileID: 3592990037795574490}
   - component: {fileID: 6616829620821918319}
   - component: {fileID: 6917460221124199725}
+  - component: {fileID: 1849286922138802897}
+  - component: {fileID: 2430835716941057305}
   m_Layer: 0
   m_Name: Goblin_rouge_b
   m_TagString: Untagged
@@ -2329,19 +2330,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 9504128}
---- !u!114 &8531855339097673739
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 185802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b062596ba802b54f8fb0fa0d646a5d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _agent: {fileID: 3507465595518309318}
 --- !u!114 &7686555447833460600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2355,7 +2343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _triggerObserver: {fileID: 2504164194271681202}
-  _followToPlayer: {fileID: 8531855339097673739}
+  _followToPlayer: {fileID: 2430835716941057305}
   _cooldown: 2
 --- !u!114 &2969438279869227716
 MonoBehaviour:
@@ -2370,8 +2358,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 5593967952059361230}
-  _current: 100
-  _max: 100
+  _current: 70
+  _max: 70
 --- !u!114 &8440128266046530835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2384,11 +2372,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fa8444d73bd48747a733768d0db41c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 5593967952059361230}
-  _attackCooldown: 3
-  _cleavage: 1
-  _effectiveDistance: 1
-  _damage: 10
+  AttackCooldown: 1
+  Radius: 1
+  EffectiveDistance: 1
+  Damage: 5
 --- !u!114 &3592990037795574490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2427,6 +2414,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd5f960c14bf7ab4c949e41b6a673fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _agent: {fileID: 3507465595518309318}
+--- !u!114 &1849286922138802897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c290010b6b165442946420ed4eec11d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hpBar: {fileID: 3492063610795468719}
+--- !u!114 &2430835716941057305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74eec874de743cc40bbfe61ff213b85d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _agent: {fileID: 3507465595518309318}

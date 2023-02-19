@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Diabloid
 {
     public interface IInputService
     {
-        Vector3 GetPosition();
+        event Action<Vector3> OnGroundTouched;
+        event Action<GameObject> OnEnemyTouched;
     }
 }

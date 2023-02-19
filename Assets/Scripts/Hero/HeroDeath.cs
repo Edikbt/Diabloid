@@ -12,15 +12,11 @@ namespace Diabloid
 
         private bool _isDead;
 
-        private void Start()
-        {
+        private void Start() => 
             _health.HealthChanged += HealthChanged;
-        }
 
-        private void OnDestroy()
-        {
+        private void OnDestroy() => 
             _health.HealthChanged -= HealthChanged;
-        }
 
         private void HealthChanged()
         {

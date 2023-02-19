@@ -7,7 +7,6 @@ namespace Diabloid
     public class EnemyHealth : MonoBehaviour, IHealth
     {
         [SerializeField] private EnemyAnimator _animator;
-
         [SerializeField] private float _current;
         [SerializeField] private float _max;
 
@@ -27,8 +26,10 @@ namespace Diabloid
 
         public void TakeDamage(float damage)
         {
+            //Debug.Log($"Enemy TakeDamage {damage} Current {Current}");
+
             Current -= damage;
-            _animator.PlayHit();
+            //_animator.PlayHit();
             HealthChanged?.Invoke();
         }
     }

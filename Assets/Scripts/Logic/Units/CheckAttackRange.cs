@@ -2,10 +2,10 @@ using UnityEngine;
 
 namespace Diabloid
 {
-    [RequireComponent(typeof(EnemyAttack))]
-    public class EnemyCheckAttackRange : MonoBehaviour
+    [RequireComponent(typeof(Attack))]
+    public class CheckAttackRange : MonoBehaviour
     {
-        [SerializeField] private EnemyAttack _attack;
+        [SerializeField] private Attack _attack;
         [SerializeField] private TriggerObserver _triggerObserver;
 
         private void Start()
@@ -16,8 +16,12 @@ namespace Diabloid
             _attack.Disable();
         }
 
-        private void TriggerEnter(Collider obj) => 
+        private void TriggerEnter(Collider obj)
+        {
+            //Debug.Log($"TriggerEnter Hero Attack zone {gameObject.name} {LayerMask.LayerToName(obj.gameObject.layer)}");
+
             _attack.Enable();
+        }
 
         private void TriggerExit(Collider obj) => 
             _attack.Disable();

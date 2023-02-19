@@ -1,5 +1,4 @@
 using System;
-using UnityEngine.Serialization;
 
 namespace Diabloid
 {
@@ -7,10 +6,12 @@ namespace Diabloid
     public class WorldData
     {
         public PositionOnLevel PositionOnLevel;
+        public GoldData GoldData;
 
         public WorldData(string initialLevel)
         {
             PositionOnLevel = new PositionOnLevel(initialLevel);
+            GoldData = new GoldData();
         }
     }
 }

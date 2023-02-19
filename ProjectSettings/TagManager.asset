@@ -16,11 +16,11 @@ TagManager:
   - 
   - 
   - Player
-  - Aggro
-  - Attack
-  - Hittable
-  - 
-  - 
+  - EnemyAggro
+  - EnemyAttack
+  - EnemyHittable
+  - PlayerAttack
+  - Pickup
   - 
   - 
   - 

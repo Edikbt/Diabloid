@@ -10,7 +10,9 @@ namespace Diabloid
         {
             DiContainerRef.Container = _diContainer;
 
-            Container.Bind<IInputService>().To<InputService>().AsSingle();
+            Container.Bind(typeof(IInputService), typeof(ITickable)).To<InputService>().AsSingle();
+            Container.Bind(typeof(IStatsDataService), typeof(IInitializable)).To<StatsDataService>().AsSingle();
+
             Container.Bind<IAssetProvider>().To<AssetProvider>().AsSingle();
             Container.Bind<IGameFactory>().To<GameFactory>().AsSingle();
             Container.Bind<IPersistentProgressService>().To<PersistentProgressService>().AsSingle();

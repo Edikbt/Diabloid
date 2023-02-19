@@ -14,7 +14,9 @@ namespace Diabloid
             _states = new Dictionary<Type, IExitableState>
             {
                 [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader),
-                [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, container.Resolve<IGameFactory>(), container.Resolve<IPersistentProgressService>()),
+                [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, 
+                    container.Resolve<IGameFactory>(), container.Resolve<IPersistentProgressService>(), container.Resolve<IStatsDataService>()),
+
                 [typeof(LoadProgressState)] = new LoadProgressState(this, container.Resolve<IPersistentProgressService>(), container.Resolve<ISaveLoadService>()),
                 [typeof(GameLoopState)] = new GameLoopState(this),
             };

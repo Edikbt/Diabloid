@@ -32,8 +32,8 @@ namespace Diabloid
             
             progress.HeroState.MaxHp = 100;
             progress.HeroState.ResetHp();
-            progress.HeroStats.Damage = 10;
-            progress.HeroStats.DamageRadius = 1;
+            progress.HeroStats.Damage = 25;
+            progress.HeroStats.DamageRadius = 2;
 
             return progress;
         }

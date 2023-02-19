@@ -9,10 +9,7 @@ namespace Diabloid
 
         private const float MinimalDistance = 1;
 
-        private Transform _target;
-
-        public void SetTaret(Transform target) =>
-          _target = target;
+        private Transform _target;        
 
         private void Update()
         {
@@ -20,8 +17,12 @@ namespace Diabloid
                 _agent.destination = _target.position;
         }
 
-        //private bool IsHeroNotReached() => _agent.transform.position.SqrMagnitudeTo(_heroTransform.position) >= MinimalDistance;
-        
+        public void SetTarget(Transform target) =>
+          _target = target;
+
+        public void ClearTarget() =>
+          _target = null;
+
         private bool IsTargetNotReached() => 
             Vector3.Distance(_agent.transform.position, _target.position) >= MinimalDistance;
 

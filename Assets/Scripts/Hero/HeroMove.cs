@@ -8,21 +8,18 @@ namespace Diabloid
     public class HeroMove : MonoBehaviour, ISavedProgress
     {
         [SerializeField] private NavMeshAgent _navMesh;
+        [SerializeField] private MoveTo _moveTo;
         private IInputService _inputService;
 
         [Inject]
         public void Construct(IInputService inputService)
         {
             _inputService = inputService;
+            _inputService.OnGroundTouched += MoveTo;
         }
 
-        private void Update()
-        {
-            Vector3 touchPosition = _inputService.GetPosition();
-
-            if (touchPosition != Vector3.zero)
-                _navMesh.SetDestination(touchPosition);
-        }
+        private void OnDestroy() => 
+            _inputService.OnGroundTouched -= MoveTo;
 
         public void LoadProgress(PlayerProgress progress)
         {
@@ -34,10 +31,14 @@ namespace Diabloid
             }
         }
 
-        public void UpdateProgress(PlayerProgress progress)
+        private void MoveTo(Vector3 position)
         {
-            progress.WorldData.PositionOnLevel = new PositionOnLevel(CurrentLevel(), transform.position.AsVectorData());
+            _moveTo.ClearTarget();
+            _navMesh.SetDestination(position);
         }
+
+        public void UpdateProgress(PlayerProgress progress) => 
+            progress.WorldData.PositionOnLevel = new PositionOnLevel(CurrentLevel(), transform.position.AsVectorData());
 
         private string CurrentLevel() => 
             SceneManager.GetActiveScene().name;

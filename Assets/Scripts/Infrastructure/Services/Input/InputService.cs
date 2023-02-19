@@ -1,23 +1,39 @@
+using System;
 using UnityEngine;
+using Zenject;
 
 namespace Diabloid
 {
-    public class InputService : IInputService
+    public class InputService : IInputService, ITickable
     {
         private const float MaxRaycastDistance = 1000f;
-        private LayerMask MoveLayer = LayerMask.NameToLayer("Ground");
+        private LayerMask _groundLayerMask = LayerMask.NameToLayer("Ground");
+        private LayerMask _enemyLayerMask = LayerMask.NameToLayer("EnemyHittable");
+        private LayerMask _layerMask;
 
-        public Vector3 GetPosition()
+        public event Action<Vector3> OnGroundTouched;
+        public event Action<GameObject> OnEnemyTouched;
+
+        public InputService()
         {
-            //if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended)
+            _layerMask = (1 <<_groundLayerMask) | (1 << _enemyLayerMask);
+        }
+
+        public void Tick()
+        {
             if (Input.GetMouseButtonUp(0))
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(ray, out RaycastHit raycastHit, MaxRaycastDistance, ~MoveLayer))
-                    return raycastHit.point;
-            }
+                if (Physics.Raycast(ray, out RaycastHit raycastHit, MaxRaycastDistance, _layerMask))
+                {
+                    int hittedLayer = raycastHit.transform.gameObject.layer;
 
-            return Vector3.zero;
+                    if (hittedLayer == _groundLayerMask)
+                        OnGroundTouched?.Invoke(raycastHit.point);
+                    else if (hittedLayer == _enemyLayerMask)
+                        OnEnemyTouched?.Invoke(raycastHit.transform.gameObject);
+                }                
+            }
         }
     }
 }

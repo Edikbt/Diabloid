@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Diabloid
 {
-    public class HeroAnimator : MonoBehaviour, IAnimationStateReader, IMoveAnimate
+    public class HeroAnimator : MonoBehaviour, IAnimationStateReader, IMoveAnimate, IAttackAnimate
     {
         private static readonly int DieHash = Animator.StringToHash("Die");
         private static readonly int IsMovingHash = Animator.StringToHash("IsMoving");
@@ -45,7 +45,7 @@ namespace Diabloid
             _animator.SetTrigger(DieHash);
 
         public void PlayAttack() =>
-            _animator.SetTrigger(AttackHash);
+            _animator.SetBool(AttackHash, true);
 
         public void Move() =>
             _animator.SetBool(IsMovingHash, true);
@@ -54,7 +54,10 @@ namespace Diabloid
             _animator.SetBool(IsMovingHash, false);
 
         public void PlayHit() =>
-            _animator.SetTrigger(HitHash);        
+            _animator.SetTrigger(HitHash);
+
+        public void StopAttack() =>
+            _animator.SetBool(AttackHash, false);
 
         private AnimatorState StateFor(int stateHash)
         {

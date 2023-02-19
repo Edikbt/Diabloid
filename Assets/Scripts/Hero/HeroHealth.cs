@@ -44,13 +44,13 @@ namespace Diabloid
 
         public void TakeDamage(float damage)
         {
-            Debug.Log($"TakeDamage {damage} Current {Current}");
+            //Debug.Log($"Hero TakeDamage {damage} Current {Current}");
 
             if (Current <= 0)
                 return;
 
             Current -= damage;
-            _animator.PlayHit();
+            //_animator.PlayHit();
         }
     }
 }
