@@ -18,8 +18,6 @@ namespace Diabloid
 
         private void TriggerEnter(Collider obj)
         {
-            //Debug.Log($"TriggerEnter Hero Attack zone {gameObject.name} {LayerMask.LayerToName(obj.gameObject.layer)}");
-
             _attack.Enable();
         }
 

@@ -15,8 +15,14 @@ MonoBehaviour:
   LevelName: Level1
   EnemySpawners:
   - Id: Level1_36180bae-a69c-4d1c-89ac-efad7c7b016a
+    EnemyTypeId: 5
+    Position: {x: 92.9, y: 0, z: 17.4}
+  - Id: Level1_467d1101-cc21-4202-9803-3881cec472cb
     EnemyTypeId: 0
-    Position: {x: -5.24, y: 0, z: 5.2}
+    Position: {x: 51.42, y: 1.59, z: 17.2}
   - Id: Level1_22d5a9b9-dd91-4327-ba7c-32630f85aeb3
     EnemyTypeId: 0
-    Position: {x: 15.74, y: 0, z: -0.8}
+    Position: {x: 27.7, y: 1.89, z: -7.1}
+  - Id: Level1_6e7b3907-f31b-4206-91e4-621fc8db99cb
+    EnemyTypeId: 0
+    Position: {x: -21.97, y: 0, z: 1.98}

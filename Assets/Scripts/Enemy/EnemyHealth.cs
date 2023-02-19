@@ -24,13 +24,12 @@ namespace Diabloid
 
         public event Action HealthChanged;
 
-        public void TakeDamage(float damage)
+        public bool TakeDamage(float damage)
         {
-            //Debug.Log($"Enemy TakeDamage {damage} Current {Current}");
-
             Current -= damage;
-            //_animator.PlayHit();
             HealthChanged?.Invoke();
+
+            return Current > 0;
         }
     }
 }

@@ -13,7 +13,6 @@ namespace Diabloid
 
         GameObject CreateHero();
         GameObject CreateHud();        
-        GameObject CreateEnemy();
         GameObject CreateEnemy(EnemyTypeId enemyTypeId, Transform parent);
         void CreateSpawner(Vector3 position, string spawnerId, EnemyTypeId enemyTypeId);
         LootGold CreateLoot();

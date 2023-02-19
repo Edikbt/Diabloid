@@ -9,6 +9,6 @@ namespace Diabloid
 
         event Action HealthChanged;
 
-        void TakeDamage(float damage);
+        bool TakeDamage(float damage);
     }
 }

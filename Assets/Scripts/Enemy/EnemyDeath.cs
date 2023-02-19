@@ -9,6 +9,7 @@ namespace Diabloid
     {
         [SerializeField] private EnemyHealth _health;
         [SerializeField] private EnemyAnimator _animator;
+        [SerializeField] private MoveTo _moveTo;
 
         public event Action EnemyDied;
 
@@ -32,6 +33,7 @@ namespace Diabloid
         {
             _health.HealthChanged -= HealthChanged;
             _animator.PlayDeath();
+            _moveTo.ClearTarget();
 
             StartCoroutine(ClearDead());
             EnemyDied?.Invoke();

@@ -19,4 +19,4 @@ MonoBehaviour:
   Radius: 1
   MinGold: 10
   MaxGold: 50
-  Prefab: {fileID: 6272855792411420264, guid: 2751e946c47f31a45ad364e3056cd057, type: 3}
+  Prefab: {fileID: 4698705025126014514, guid: 4bb9e2b7a315a294e88e460e0062411c, type: 3}

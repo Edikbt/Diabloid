@@ -24,16 +24,6 @@ namespace Diabloid
             return Hero;
         }
 
-        public GameObject CreateEnemy()
-        {
-            GameObject enemy = InstantiateRegistered(AssetAddress.GoblinPath);
-
-            enemy.GetComponent<MoveTo>().SetTarget(Hero.transform);
-            enemy.GetComponent<EnemyAttack>().SetTarget(Hero.transform);
-
-            return enemy;
-        }
-
         public GameObject CreateEnemy(EnemyTypeId enemyTypeId, Transform parent)
         {
             EnemyStatsData enemyData = _statsDataService.Enemy(enemyTypeId);

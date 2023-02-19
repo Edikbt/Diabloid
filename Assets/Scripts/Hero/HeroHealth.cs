@@ -42,15 +42,13 @@ namespace Diabloid
             progress.HeroState.MaxHp = Max;
         }
 
-        public void TakeDamage(float damage)
+        public bool TakeDamage(float damage)
         {
-            //Debug.Log($"Hero TakeDamage {damage} Current {Current}");
-
             if (Current <= 0)
-                return;
+                return false;
 
             Current -= damage;
-            //_animator.PlayHit();
+            return Current > 0;
         }
     }
 }

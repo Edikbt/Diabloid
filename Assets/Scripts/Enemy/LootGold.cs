@@ -37,7 +37,7 @@ namespace Diabloid
 
         private IEnumerator StartDestroyTimer()
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.1f);
             Destroy(gameObject);
         }
     }

@@ -30,11 +30,9 @@ namespace Diabloid
 
         private void OnAttack()
         {
-            //Debug.Log($"{gameObject.name} OnAttack");
-
             if (Hit(out Collider hit))
             {
-                //Debug.Log($"Hit {hit.gameObject.name}");
+                //Debug.Log($"{gameObject.name} hit {hit.gameObject.name}");
                 hit.GetComponentInParent<IHealth>().TakeDamage(Damage);
             }
         }
